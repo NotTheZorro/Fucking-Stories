@@ -8,7 +8,7 @@ import time
 import datetime
 import logging
 
-bot = telegram.Bot('TOKEN', request = Request(con_pool_size = 24, connect_timeout = 120))
+bot = telegram.Bot('1098575358:AAFDJY_0DEOEghREwmF-xCN3eUM0IfjGk3g', request = Request(con_pool_size = 24, connect_timeout = 120))
 # noinspection PyArgumentList
 logging.basicConfig(handlers = [logging.FileHandler('errors.log', 'w', 'utf-8')],
                     format = '%(asctime)s - %(name)s - %(levelname)s - %(message)s', level = logging.ERROR)
@@ -34,5 +34,5 @@ def check_delete():
 
 @run_async
 def add_post(u, ctx):
-    posts[str(u.message.message_id)] = [u.message.chat.id, u.message.date + datetime.timedelta(1)]
+    posts[str(u.channel_post.message_id)] = [u.channel_post.chat.id, u.channel_post.date + datetime.timedelta(1)]
     toml.dump(posts, open('posts.toml', 'w'))
