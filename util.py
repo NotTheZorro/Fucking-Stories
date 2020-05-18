@@ -25,7 +25,7 @@ def check_delete():
     while True:
         try:
             for post in posts:
-                if posts[post] < datetime.datetime.now():
+                if posts[post][1] < datetime.datetime.now():
                     bot.delete_message(posts[post][0], post)
         except Exception as e:
             log.error(e)
